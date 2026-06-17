@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SP Super Speciality Clinic | Dedication Beyond Measure</title>
+  <style>
+    /* ── reset & base ── */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background-color: #f4f8fb;
+      color: #102a43;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      position: relative;
+      font-size: 16px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: linear-gradient(135deg, rgba(10, 55, 94, 0.92), rgba(6, 44, 70, 0.88)),
+        url('https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=1600');
+      background-size: cover;
+      background-position: center;
+      /* background-attachment: fixed; — removed for mobile compatibility */
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 16px;
+      }
+    }
+
+    /* ── utility bar ── */
+    .utility-bar {
+      background: #0d4a42;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.7rem;
+      padding: 0.4rem 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .utility-bar .left {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem 1.2rem;
+    }
+    .utility-bar .right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem 1.2rem;
+    }
+    .utility-bar a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .utility-bar a:hover {
+      color: #fff;
+    }
+    .utility-bar .sep {
+      color: rgba(255, 255, 255, 0.2);
+    }
+    @media (max-width: 600px) {
+      .utility-bar {
+        font-size: 0.55rem;
+        padding: 0.3rem 0.6rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+      }
+      .utility-bar .right {
+        gap: 0.4rem 0.8rem;
+      }
+    }
+
+    /* ── sticky header ── */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid rgba(45, 212, 191, 0.5);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1.2rem;
+      max-width: 1440px;
+      margin: 0 auto;
+      gap: 0.8rem;
+      flex-wrap: nowrap;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .logo-img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: white;
+      padding: 3px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    .logo-text h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #0c2340, #1a4870);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: #009688;
+      display: block;
+      line-height: 1.1;
+    }
+    @media (max-width: 480px) {
+      .logo-img {
+        width: 34px;
+        height: 34px;
+      }
+      .logo-text h2 {
+        font-size: 1rem;
+      }
+      .logo-text span {
+        font-size: 0.5rem;
+      }
+    }
+
+    .btn-appointment-nav {
+      background: #dc3545;
+      color: white !important;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(220, 53, 69, 0.25);
+    }
+    .btn-appointment-nav:hover {
+      background: #b71c1c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(220, 53, 69, 0.35);
+    }
+    @media (max-width: 480px) {
+      .btn-appointment-nav {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.65rem;
+        gap: 0.2rem;
+      }
+    }
+
+    /* ── nav menu ── */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 1.8rem;
+      margin: 0;
+      padding: 0;
+      flex: 1 1 auto;
+      justify-content: flex-end;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e3a5f;
+      transition: 0.2s;
+      cursor: pointer;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .nav-menu a:hover {
+      color: #009688;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2.5px;
+      background: #1a4870;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 4px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    /* ── desktop nav ── */
+    @media (min-width: 769px) {
+      .hamburger {
+        display: none !important;
+      }
+      .nav-menu {
+        display: flex !important;
+        position: static !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-top: none !important;
+        gap: 1.8rem !important;
+        width: auto !important;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        flex: 1 1 auto !important;
+      }
+      .nav-menu.mobile-open {
+        display: flex !important;
+        flex-direction: row !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-top: none !important;
+        gap: 1.8rem !important;
+        width: auto !important;
+        position: static !important;
+        justify-content: flex-end !important;
+        flex: 1 1 auto !important;
+      }
+      .nav-menu.mobile-open a {
+        border-bottom: none !important;
+        padding: 0 !important;
+        width: auto !important;
+      }
+    }
+
+    /* ── mobile nav ── */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex !important;
+      }
+      .nav-menu {
+        display: none !important;
+        flex: 0 0 auto !important;
+        justify-content: flex-start !important;
+      }
+      .nav-menu.mobile-open {
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 1.2rem 1.5rem !important;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
+        border-top: 1px solid rgba(45, 212, 191, 0.2) !important;
+        gap: 1rem !important;
+        align-items: flex-start !important;
+        z-index: 99 !important;
+        flex: 0 0 auto !important;
+        justify-content: flex-start !important;
+      }
+      .nav-menu.mobile-open a {
+        font-size: 1rem !important;
+        padding: 0.3rem 0 !important;
+        width: 100% !important;
+        border-bottom: 1px solid #f0f4f8 !important;
+        white-space: normal !important;
+      }
+      .nav-menu.mobile-open a:last-child {
+        border-bottom: none !important;
+      }
+      .nav-left {
+        gap: 0.6rem;
+      }
+      .nav-container {
+        padding: 0.5rem 0.8rem;
+      }
+    }
+
+    /* ── pages ── */
+    .page {
+      display: none;
+      animation: fade 0.3s ease;
+    }
+    .page.active-page {
+      display: block;
+    }
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── hero ── (LIGHTER OVERLAY) */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 2.5rem;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(to bottom, rgba(13, 148, 136, 0.65), rgba(15, 118, 110, 0.70)),
+        url('hero5.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+      padding: 3.5rem 2rem 4rem;
+      border-radius: 0 0 32px 32px;
+      margin-bottom: 2rem;
+      min-height: 75vh;
+    }
+
+    .hero-left {
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .hero-left .kicker {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      display: inline-block;
+      padding: 0.25rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-left h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-left .hero-description {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      max-width: 90%;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      width: 100%;
+      max-width: 420px;
+    }
+    .hero-buttons .row {
+      display: flex;
+      gap: 0.8rem;
+      width: 100%;
+    }
+    .hero-buttons .row .btn {
+      flex: 1;
+      padding: 0.8rem 1.2rem;
+      border-radius: 48px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      min-height: 52px;
+    }
+    .hero-buttons .btn-red {
+      background: #dc3545;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(220, 53, 69, 0.3);
+    }
+    .hero-buttons .btn-red:hover {
+      background: #b71c1c;
+      transform: translateY(-2px);
+    }
+    .hero-buttons .btn-green {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+    }
+    .hero-buttons .btn-green:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+    }
+    .hero-buttons .btn-outline-light {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      width: 100%;
+    }
+    .hero-buttons .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ── glass card ── */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 32px;
+      padding: 1.8rem;
+      border: 1px solid rgba(45, 212, 191, 0.3);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+      color: #0c2340;
+      position: relative;
+      z-index: 2;
+      align-self: center;
+    }
+    .glass-card h3 {
+      color: #0c2340;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .glass-card h4 {
+      color: #1a4870;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .glass-card h4::before {
+      content: "📋";
+    }
+    .glass-card .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .glass-card .hours-item {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 0.7rem 0.8rem;
+      border-radius: 16px;
+      border: 1px solid rgba(45, 212, 191, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .glass-card .hours-item .row1 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+    .glass-card .hours-item .row1 .icon {
+      font-size: 1.1rem;
+    }
+    .glass-card .hours-item .row1 .label {
+      color: #1a4870;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .glass-card .hours-item .row1 .time {
+      color: #102a43;
+      margin-left: auto;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .glass-card .hours-item .doctor-name {
+      font-size: 0.78rem;
+      color: #2c6e9e;
+      padding-left: 1.8rem;
+      font-weight: 500;
+      border-left: 2px solid #2dd4bf;
+      padding-left: 0.8rem;
+      margin-left: 0.2rem;
+    }
+    .glass-card .hours-item .doctor-name .specialty {
+      color: #009688;
+      font-weight: 600;
+    }
+    .glass-card .hours-item.full-width {
+      grid-column: 1 / -1;
+      text-align: center;
+      flex-direction: row;
+      justify-content: center;
+      padding: 0.5rem 0.8rem;
+    }
+    .glass-card .hours-item.full-width .row1 {
+      gap: 0.8rem;
+    }
+    .glass-card .directions-btn {
+      margin-top: 1.2rem;
+      width: 100%;
+      border: 1.5px solid #0c2340;
+      color: #0c2340;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 0.7rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    .glass-card .directions-btn:hover {
+      background: rgba(12, 35, 64, 0.08);
+    }
+
+    @media (max-width: 480px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem 2.5rem;
+        min-height: 65vh;
+        gap: 1.5rem;
+      }
+      .hero-left h1 {
+        font-size: 1.8rem;
+      }
+      .hero-left .hero-description {
+        font-size: 0.9rem;
+        max-width: 100%;
+      }
+      .hero-buttons .row {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .hero-buttons .row .btn {
+        width: 100%;
+        min-height: 48px;
+        font-size: 0.85rem;
+      }
+      .hero-buttons .btn-outline-light {
+        width: 100%;
+      }
+      .glass-card {
+        padding: 1.2rem;
+      }
+      .glass-card .hours-grid {
+        grid-template-columns: 1fr;
+      }
+      .glass-card .hours-item {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .hero-left h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+    }
+
+    /* ── sections ── */
+    section {
+      background: rgba(255, 255, 255, 0.94);
+      margin: 2rem 0;
+      border-radius: 48px;
+      padding: 3rem 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+    }
+    .section-title {
+      font-size: 2.2rem;
+      text-align: center;
+      color: #0c2340;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    .about-grid,
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+
+    .about-card,
+    .service-card {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid #eef2f8;
+      transition: all 0.25s ease;
+    }
+    .about-card:hover,
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.06);
+      border-color: rgba(45, 212, 191, 0.25);
+    }
+    .about-card h3,
+    .service-card h3 {
+      font-size: 1.3rem;
+      color: #1a4870;
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+    }
+    .about-card p,
+    .service-card p {
+      color: #2c3e50;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .service-card {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0c2340;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem;
+      transition: 0.25s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid #eef2f8;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.06);
+    }
+    .testimonial-card .reviewer {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #009688;
+      font-size: 0.9rem;
+    }
+
+    /* ── doctors page ── */
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2.5rem;
+      margin-top: 1rem;
+      padding: 0 1rem;
+    }
+    .doctor-card {
+      background: white;
+      border-radius: 40px;
+      padding: 2rem 1.8rem;
+      text-align: center;
+      transition: 0.25s;
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+    }
+    .doctor-card:hover {
+      transform: translateY(-8px);
+    }
+    .doctor-img {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 1.2rem;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #f0f6fe, #e9f0f8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 15px 25px -8px rgba(0, 0, 0, 0.1);
+      border: 4px solid white;
+    }
+    .doctor-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .doctor-img-placeholder {
+      font-size: 5rem;
+      color: #1a4870;
+    }
+    .doctor-card h3 {
+      font-size: 1.7rem;
+      margin: 1rem 0 0.3rem;
+      color: #1a4870;
+    }
+    .doctor-card .designation {
+      font-size: 1rem;
+      color: #009688;
+      font-weight: 600;
+    }
+    .doctor-card .qualifications {
+      font-size: 0.9rem;
+      color: #2c3e50;
+      margin: 0.2rem 0 0.8rem;
+    }
+    .contact-details {
+      background: #f8fafc;
+      padding: 0.8rem;
+      border-radius: 28px;
+      margin: 1rem 0;
+    }
+    .card-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .card-actions .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      flex: 1 1 auto;
+      min-width: 120px;
+    }
+    .card-actions .btn-primary {
+      background: #1a4870;
+      color: white;
+      box-shadow: 0 4px 12px rgba(26, 72, 112, 0.15);
+    }
+    .card-actions .btn-primary:hover {
+      background: #0c3452;
+      transform: translateY(-2px);
+    }
+    .card-actions .btn-outline {
+      background: transparent;
+      color: #1a4870;
+      border: 1.5px solid #1a4870;
+    }
+    .card-actions .btn-outline:hover {
+      background: rgba(26, 72, 112, 0.06);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 900px) {
+      .doctors-grid {
+        grid-template-columns: 1fr;
+      }
+      .doctor-img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+    @media (max-width: 480px) {
+      .doctor-card {
+        padding: 1.5rem 1rem;
+      }
+      .doctor-img {
+        width: 140px;
+        height: 140px;
+      }
+      .about-grid,
+      .services-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── doctor detail ── */
+    #doctor-detail-page {
+      background: transparent;
+      padding: 0;
+      margin: 2rem 0;
+    }
+    .detail-wrapper {
+      background: linear-gradient(135deg, #ffffff, #eaf3fc);
+      border-radius: 32px;
+      padding: 2.5rem;
+      border: 1px solid rgba(45, 212, 191, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+      margin: 1.5rem 0;
+    }
+    .detail-hero {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .detail-hero .doc-img {
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #eef2f8;
+      border: 6px solid white;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+      justify-self: center;
+    }
+    .detail-hero .doc-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .detail-hero .doc-img .placeholder {
+      font-size: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #1a4870;
+      opacity: 0.4;
+    }
+    .detail-hero .doc-info h2 {
+      font-size: 2.4rem;
+      color: #0c2340;
+      font-weight: 700;
+    }
+    .detail-hero .doc-info .designation {
+      font-size: 1.2rem;
+      color: #009688;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .detail-hero .doc-info .qualifications {
+      font-size: 1rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+    .detail-hero .doc-info .experience {
+      font-size: 0.95rem;
+      color: #1a4870;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .detail-hero .doc-info .profile-text {
+      color: #1e3a5f;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 90%;
+    }
+    .detail-section {
+      margin-bottom: 2rem;
+    }
+    .detail-section h3 {
+      font-size: 1.5rem;
+      color: #0c2340;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .detail-section h3::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, #2dd4bf, transparent);
+    }
+    .milestone-list {
+      list-style: none;
+      padding: 0;
+    }
+    .milestone-list li {
+      padding: 0.4rem 0 0.4rem 1.8rem;
+      position: relative;
+      font-size: 0.95rem;
+      color: #1e3a5f;
+      line-height: 1.6;
+    }
+    .milestone-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: #2dd4bf;
+      font-weight: 700;
+    }
+    .expertise-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .expertise-chips .chip {
+      background: rgba(0, 150, 136, 0.08);
+      color: #009688;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(0, 150, 136, 0.12);
+    }
+    .btn-red-outline {
+      background: transparent;
+      color: #c7362b;
+      border: 1.5px solid #c7362b;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-red-outline:hover {
+      background: rgba(199, 54, 43, 0.06);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 900px) {
+      .detail-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .detail-hero .doc-info .profile-text {
+        max-width: 100%;
+      }
+      .detail-hero .doc-img {
+        max-width: 200px;
+      }
+      .detail-wrapper {
+        padding: 1.5rem;
+      }
+    }
+
+    /* ── gallery & testimonial photo grid (FIXED) ── */
+    .gallery-grid,
+    .testimonial-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      padding: 0 1rem;
+    }
+
+    .gallery-item,
+    .testimonial-photo-item {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      transition: 0.25s;
+      position: relative;
+    }
+    .gallery-item:hover,
+    .testimonial-photo-item:hover {
+      transform: translateY(-6px);
+    }
+
+    /* ── image styling: no top-crop ── */
+    .gallery-item img,
+    .testimonial-photo-item img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: center 20%;
+      /* shift focus down so top is visible */;
+      display: block;
+    }
+
+    /* ── mobile image height ── */
+    @media (max-width: 768px) {
+      .gallery-item img,
+      .testimonial-photo-item img {
+        height: 280px;
+        object-position: center 10%;
+      }
+      .gallery-grid,
+      .testimonial-photo-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery-item img,
+      .testimonial-photo-item img {
+        height: 200px;
+        object-position: center 5%;
+      }
+      .gallery-grid,
+      .testimonial-photo-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        padding: 0 0.25rem;
+      }
+    }
+
+    /* ── contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+    .contact-info-text {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+    .contact-info-text p {
+      margin-bottom: 1rem;
+    }
+    .contact-info-text strong {
+      font-size: 1.3rem;
+      color: #0c2340;
+    }
+    .contact-info-text a {
+      color: #1a4870;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .map-container {
+      border-radius: 32px;
+      overflow: hidden;
+      height: 500px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .map-container {
+        height: 350px;
+      }
+    }
+
+    /* ── FAQ ── */
+    .faq-item {
+      background: white;
+      border-radius: 28px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eef2f8;
+    }
+
+    /* ── floating actions ── */
+    .floating-actions {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 99;
+    }
+    .float-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transition: 0.2s;
+      text-decoration: none;
+      font-size: 1.8rem;
+    }
+    .float-btn.whatsapp1 {
+      background: #25D366;
+      color: white;
+    }
+    .float-btn.whatsapp2 {
+      background: #128C7E;
+      color: white;
+    }
+    .float-btn.ai-assistant {
+      background: #1a4870;
+      color: white;
+      cursor: pointer;
+    }
+    .float-btn:hover {
+      transform: scale(1.08);
+    }
+    @media (max-width: 480px) {
+      .floating-actions {
+        right: 0.8rem;
+        bottom: 0.8rem;
+        gap: 0.7rem;
+      }
+      .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+      }
+    }
+
+    /* ── AI modal ── */
+    .ai-modal {
+      position: fixed;
+      bottom: 130px;
+      right: 90px;
+      width: 380px;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+      display: none;
+      flex-direction: column;
+      z-index: 100;
+      border: 1px solid #2dd4bf;
+      overflow: hidden;
+    }
+    .ai-modal.active {
+      display: flex;
+    }
+    .ai-header {
+      background: #0c2340;
+      color: white;
+      padding: 1rem 1.2rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ai-body {
+      padding: 1rem;
+      height: 320px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      background: #f9fbfd;
+    }
+    .chat-message {
+      max-width: 85%;
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .user-message {
+      align-self: flex-end;
+      background: #1a4870;
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+    .bot-message {
+      align-self: flex-start;
+      background: #eef2fa;
+      color: #1e3a5f;
+      border-bottom-left-radius: 4px;
+    }
+    .ai-input-area {
+      display: flex;
+      padding: 0.8rem;
+      border-top: 1px solid #e2edf7;
+      background: white;
+    }
+    .ai-input-area input {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 40px;
+      outline: none;
+      font-size: 0.9rem;
+    }
+    .ai-input-area button {
+      background: #1a4870;
+      border: none;
+      color: white;
+      margin-left: 0.5rem;
+      padding: 0 1.2rem;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .ai-close {
+      cursor: pointer;
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 768px) {
+      .ai-modal {
+        right: 16px;
+        bottom: 100px;
+        width: calc(100% - 32px);
+        max-width: 380px;
+      }
+    }
+
+    /* ── modals ── */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.25s;
+    }
+    .modal-overlay>div {
+      background: white;
+      max-width: 550px;
+      width: 90%;
+      border-radius: 40px;
+      padding: 2rem;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-overlay>div .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* ── footer ── */
+    footer {
+      background: #0c2340;
+      color: #adc6e0;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 28px 28px 0 0;
+      margin-top: 2rem;
+    }
+
+    /* ── misc helpers ── */
+    .btn-primary {
+      background: #1a4870;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 48px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-primary:hover {
+      background: #0c3452;
+      transform: translateY(-2px);
+    }
+    .btn-teal {
+      background: #009688;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 48px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-teal:hover {
+      background: #00796b;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP UTILITY BAR ===== -->
+  <div class="utility-bar">
+    <div class="left">
+      <span>📍 Khinvasara Trade Centre, Datta Mandir Rd, Wakad, Pune</span>
+    </div>
+    <div class="right">
+      <a href="tel:9850823550">📞 +91 98508 23550</a>
+      <span class="sep">|</span>
+      <a href="mailto:ashlesha12@gmail.com">✉️ ashlesha12@gmail.com</a>
+    </div>
+  </div>
+
+  <!-- ===== STICKY HEADER ===== -->
+  <div class="sticky-header">
+    <div class="nav-container">
+      <div class="nav-left">
+        <div class="logo-area">
+          <img class="logo-img" src="clinic_logo.jpeg" alt="Clinic Logo" onerror="this.style.display='none'">
+          <div class="logo-text">
+            <h2>SP Super Speciality</h2>
+            <span>Wakad, Pune</span>
+          </div>
+        </div>
+        <a href="#" class="btn-appointment-nav" id="navAppointmentBtn">📅 Book Appointment</a>
+      </div>
+
+      <!-- nav menu – flex:1 + justify-content:flex-end keeps it right -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a data-page="home">Home</a></li>
+        <li><a data-page="doctors">Doctors</a></li>
+        <li><a data-page="gallery">Gallery</a></li>
+        <li><a data-page="testimonials">Testimonials</a></li>
+        <li><a data-page="faq">FAQ</a></li>
+        <li><a data-page="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main id="app-root">
+    <!-- ===== HOME PAGE ===== -->
+    <div id="home-page" class="page active-page">
+      <!-- ===== HERO SECTION ===== -->
+      <section class="hero-section">
+        <div class="hero-left">
+          <div class="kicker">✦ CONSULTANT PEDIATRIC SURGERY &amp; NEURO SURGERY</div>
+          <h1>Premium pediatric  &amp; neuro surgical care</h1>
+          <p class="hero-description">
+            Compassionate consultations led by our specialist doctors at Wakad, Pune. Clear communication, timely appointments, and patient-first care.
+          </p>
+          <div class="hero-buttons">
+            <div class="row">
+              <a href="#" class="btn btn-red hero-appointment-btn">📅 Book Appointment</a>
+              <a href="https://wa.me/919850823550?text=Hello%2C%20I%20need%20an%20appointment" class="btn btn-green" target="_blank">💬 WhatsApp Now</a>
+            </div>
+            <div class="row">
+              <a href="tel:9850823550" class="btn btn-outline-light">📞 Call Clinic</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== CLINICAL FOCUS GLASS CARD ===== -->
+        <div class="glass-card">
+          <h3>🏥 Clinical Focus</h3>
+          <div style="display:flex; gap:1.5rem; margin:0.5rem 0 1rem; flex-wrap:wrap;">
+            <span style="background:rgba(0,150,136,0.1); padding:0.3rem 0.8rem; border-radius:20px;">🩺 Pediatric Surgery</span>
+            <span style="background:rgba(0,150,136,0.1); padding:0.3rem 0.8rem; border-radius:20px;">🧠 Neurosurgery</span>
+          </div>
+          <h4>Consultation Hours</h4>
+          <div class="hours-grid">
+            <div class="hours-item">
+              <div class="row1">
+                <span class="icon">🌅</span>
+                <span class="label">Morning</span>
+                <span class="time">10:00 – 2:00</span>
+              </div>
+              <div class="doctor-name">👨‍⚕️ <span style="font-weight:600;">Dr. Mohnish Dighe</span> <span class="specialty">(Neurosurgery)</span></div>
+            </div>
+            <div class="hours-item">
+              <div class="row1">
+                <span class="icon">🌙</span>
+                <span class="label">Evening</span>
+                <span class="time">6:30 – 8:30</span>
+              </div>
+              <div class="doctor-name">👩‍⚕️ <span style="font-weight:600;">Dr. Ashlesha Shimpi-Dighe</span> <span class="specialty">(Pediatric Surgery)</span></div>
+            </div>
+            <div class="hours-item full-width">
+              <div class="row1">
+                <span class="icon">📆</span>
+                <span class="label" style="font-size:0.95rem;">Monday – Saturday</span>
+              </div>
+            </div>
+          </div>
+          <button class="directions-btn" id="directionsBtn">📍 Get Directions</button>
+        </div>
+      </section>
+
+      <!-- ===== ABOUT SECTION ===== -->
+      <section>
+        <div class="container">
+          <h2 class="section-title">About the Clinic</h2>
+          <div class="about-grid">
+            <div class="about-card">
+              <h3>🏛️ Our Vision</h3>
+              <p>Advanced surgical care with a human touch. State-of-the-art facility in Wakad.</p>
+            </div>
+            <div class="about-card">
+              <h3>📢 Doctor’s Message</h3>
+              <p>“World‑class care with empathy.” — Dr. Mohnish Dighe</p>
+            </div>
+            <div class="about-card">
+              <h3>⚕️ Core Values</h3>
+              <p>Clear communication, timely appointments, child‑centered excellence.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SERVICES SECTION ===== -->
+      <section>
+        <div class="container">
+          <h2 class="section-title">Advanced Surgical Services</h2>
+          <div class="services-grid">
+            <div class="service-card">🧠 Neurosurgery</div>
+            <div class="service-card">🩺 Pediatric Surgery</div>
+            <div class="service-card">👶 Neonatal Surgery</div>
+            <div class="service-card">📋 General Consultation</div>
+            <div class="service-card">🧸 Child Healthcare Guidance</div>
+            <div class="service-card">🔁 Surgical Follow-up</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TESTIMONIALS SECTION ===== -->
+      <section>
+        <div class="container">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; padding:0 1rem;">
+            <h2 class="section-title" style="margin-bottom:0;">Patient Stories</h2>
+            <button class="btn-primary" id="openReviewBtn" style="background:#009688; padding:0.6rem 1.5rem; border:none; border-radius:40px; color:white; font-weight:600; cursor:pointer;">✍️ Write a Review</button>
+          </div>
+          <div class="testimonials-grid" id="testimonialsGrid"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== DOCTORS PAGE ===== -->
+    <div id="doctors-page" class="page">
+      <section>
+        <div class="container">
+          <h2 class="section-title">Meet Our Specialists</h2>
+          <div class="doctors-grid">
+            <!-- Dr. Ashlesha -->
+            <div class="doctor-card">
+              <div class="doctor-img"><img src="ashlesha.jpeg" alt="Dr. Ashlesha" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'doctor-img-placeholder\'>👩‍⚕️</div>'"></div>
+              <h3>Dr. Ashlesha Shimpi‑Dighe</h3>
+              <div class="designation">Consultant Pediatric & Neonatal Surgeon</div>
+              <div class="qualifications">MBBS, DNB (Gen Surgery), MCh (Pediatric Surgery)</div>
+              <div class="contact-details"><p>📞 9850823550</p><p>✉️ ashlesha12@gmail.com</p></div>
+              <div class="card-actions">
+                <button class="btn btn-primary doctor-book" data-doc="ashlesha">📅 Book Appointment</button>
+                <button class="btn btn-outline doctor-know-more" data-doc="ashlesha">📖 Know More</button>
+              </div>
+            </div>
+
+            <!-- Dr. Mohnish -->
+            <div class="doctor-card">
+              <div class="doctor-img"><img src="Dr-Mohnish.webp" alt="Dr. Mohnish" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'doctor-img-placeholder\'>👨‍⚕️</div>'"></div>
+              <h3>Dr. Mohnish Dighe</h3>
+              <div class="designation">Consultant Brain & Spine Neurosurgeon</div>
+              <div class="qualifications">MBBS, DNB (Gen Surgery), DNB (Neurosurgery)</div>
+              <div class="contact-details"><p>📞 9762801248</p><p>✉️ dighemohnish@yahoo.com</p></div>
+              <div class="card-actions">
+                <button class="btn btn-primary doctor-book" data-doc="mohnish">📅 Book Appointment</button>
+                <button class="btn btn-outline doctor-know-more" data-doc="mohnish">📖 Know More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== DOCTOR DETAIL PAGE ===== -->
+    <div id="doctor-detail-page" class="page">
+      <div class="container" style="padding-top:0;">
+        <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
+          <button class="btn-red-outline" id="backToDoctors">← Back to Doctors</button>
+          <span style="color: #c7362b; font-size:0.9rem; font-weight:500;">|</span>
+          <span style="color: #c7362b; font-size:0.9rem; font-weight:500;">Know More</span>
+        </div>
+        <div id="doctorDetailContent"></div>
+      </div>
+    </div>
+
+    <!-- ===== GALLERY PAGE ===== -->
+    <div id="gallery-page" class="page">
+      <section>
+        <div class="container">
+          <h2 class="section-title">Our Clinic Gallery</h2>
+          <div class="gallery-grid">
+            <div class="gallery-item"><img src="clinic01.jpeg" alt="Clinic image 1" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Image+1'"></div>
+            <div class="gallery-item"><img src="clinic02.jpeg" alt="Clinic image 2" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Image+2'"></div>
+            <div class="gallery-item"><img src="clinic03.jpeg" alt="Clinic image 3" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Image+3'"></div>
+            <div class="gallery-item"><img src="clinic04.jpeg" alt="Clinic image 4" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Image+4'"></div>
+            <div class="gallery-item"><img src="clinic05.jpeg" alt="Clinic image 5" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Image+5'"></div>
+            <div class="gallery-item"><img src="clinic06.jpeg" alt="Clinic image 6" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Image+6'"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== TESTIMONIALS PAGE (photos) ===== -->
+    <div id="testimonials-page" class="page">
+      <section>
+        <div class="container">
+          <h2 class="section-title">Patient Testimonials</h2>
+          <div class="testimonial-photo-grid">
+            <div class="testimonial-photo-item"><img src="patient1.jpeg" alt="Patient 1" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Patient+1'"></div>
+            <div class="testimonial-photo-item"><img src="patient2.jpeg" alt="Patient 2" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Patient+2'"></div>
+            <div class="testimonial-photo-item"><img src="patient3.jpeg" alt="Patient 3" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Patient+3'"></div>
+            <div class="testimonial-photo-item"><img src="patient4.jpeg" alt="Patient 4" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Patient+4'"></div>
+            <div class="testimonial-photo-item"><img src="patient5.jpeg" alt="Patient 5" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Patient+5'"></div>
+            <div class="testimonial-photo-item"><img src="patient6.jpeg" alt="Patient 6" loading="lazy" onerror="this.src='https://placehold.co/600x400/1a4870/white?text=Patient+6'"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== FAQ PAGE ===== -->
+    <div id="faq-page" class="page">
+      <section>
+        <div class="container">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <div class="faq-item"><strong>❓ Do I need a referral to book an appointment?</strong><br>No, you can directly book via our form or WhatsApp — no referral required.</div>
+          <div class="faq-item"><strong>❓ What conditions do you treat?</strong><br>We specialize in pediatric surgical conditions (e.g., hernias, undescended testis, neonatal anomalies), neurosurgical problems (e.g., brain/spine tumors, neurotrauma), and general surgical consultations for children and adults.</div>
+          <div class="faq-item"><strong>❓ How do I prepare for my first consultation?</strong><br>Please bring any previous medical reports, scan images, and a list of current medications. Also carry your insurance card if you plan to use it. We recommend arriving 10‑15 minutes early to complete registration.</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== CONTACT PAGE ===== -->
+    <div id="contact-page" class="page">
+      <section>
+        <div class="container">
+          <h2 class="section-title">Reach Us</h2>
+          <div class="contact-grid">
+            <div class="contact-info-text">
+              <p><strong>📍 SP Superspeciality Clinic</strong><br>Khinvasara Trade Centre, Wakad, Pune – 411057</p>
+              <p><strong>📞 Clinic:</strong> +91 20 6731 3000</p>
+              <p><strong>📱 Dr. Ashlesha:</strong> <a href="tel:9850823550">9850823550</a> | <a href="mailto:ashlesha12@gmail.com">ashlesha12@gmail.com</a></p>
+              <p><strong>📱 Dr. Mohnish:</strong> <a href="tel:9762801248">9762801248</a> | <a href="mailto:dighemohnish@yahoo.com">dighemohnish@yahoo.com</a></p>
+              <button class="btn-primary contact-appointment-btn" style="margin-top:1rem; background:#1a4870; color:white; border:none; padding:0.8rem 2rem; border-radius:48px; font-weight:700; cursor:pointer;">📅 Book Appointment</button>
+            </div>
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.4567829732977!2d73.768303!3d18.598712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9a9a9a9a9a9%3A0x5c5c5c5c5c5c5c5c!2sKhinvasara%20Trade%20Centre%2C%20Wakad%2C%20Pune!5e0!3m2!1sen!2sin!4v16171819202122!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Floating Sidebar -->
+  <div class="floating-actions">
+    <a href="https://wa.me/919850823550?text=Hello%20Dr.%20Ashlesha%2C%20I%20need%20an%20appointment" class="float-btn whatsapp1" target="_blank">👩‍⚕️</a>
+    <a href="https://wa.me/919762801248?text=Hello%20Dr.%20Mohnish%2C%20I%20need%20a%20consultation" class="float-btn whatsapp2" target="_blank">👨‍⚕️</a>
+    <div class="float-btn ai-assistant" id="aiAssistantBtn">🤖</div>
+  </div>
+
+  <!-- AI Chatbot Modal -->
+  <div id="aiModal" class="ai-modal">
+    <div class="ai-header"><span>🤖 SP Clinic AI Assistant</span><span class="ai-close" id="closeAiModal">&times;</span></div>
+    <div class="ai-body" id="chatBody"><div class="chat-message bot-message">Hello! I'm your virtual clinic assistant. Ask me anything about appointments, doctors, hours, or location.</div></div>
+    <div class="ai-input-area"><input type="text" id="chatInput" placeholder="Type your question..."><button id="sendChatBtn">Send</button></div>
+  </div>
+
+  <!-- Appointment Modal -->
+  <div id="appointmentModal" class="modal-overlay">
+    <div>
+      <div class="close-btn" id="closeModalBtn">&times;</div>
+      <h3 style="margin-bottom:0.5rem;">📋 Schedule a Visit</h3>
+      <p style="margin-bottom:1.5rem; color:#5a7a9a;">Request sent directly to the doctor.</p>
+      <form id="appointmentForm">
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+          <div style="flex:1; min-width:140px;"><label>Full Name *</label><input type="text" id="fullName" required style="width:100%; padding:0.8rem; border-radius:28px; border:1px solid #ccc;"></div>
+          <div style="flex:1; min-width:100px;"><label>Age</label><input type="number" id="age" style="width:100%; padding:0.8rem; border-radius:28px; border:1px solid #ccc;"></div>
+        </div>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+          <div style="flex:1; min-width:140px;"><label>Phone *</label><input type="tel" id="phone" required style="width:100%; padding:0.8rem; border-radius:28px; border:1px solid #ccc;"></div>
+          <div style="flex:1; min-width:140px;"><label>Email</label><input type="email" id="email" style="width:100%; padding:0.8rem; border-radius:28px; border:1px solid #ccc;"></div>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <label>Preferred Doctor *</label>
+          <select id="preferredDoctor" required style="width:100%; padding:0.8rem; border-radius:28px; border:1px solid #ccc;">
+            <option value="">Select</option>
+            <option value="ashlesha">Dr. Ashlesha (9850823550) — 6:30 PM – 8:30 PM (Pediatric Surgery)</option>
+            <option value="mohnish">Dr. Mohnish (9762801248) — 10:00 AM – 2:00 PM (Neurosurgery)</option>
+          </select>
+        </div>
+        <div style="margin-bottom:1rem;"><label>Preferred Date *</label><input type="date" id="date" required style="width:100%; padding:0.8rem; border-radius:28px; border:1px solid #ccc;"></div>
+        <div style="margin-bottom:1rem;"><label>Time Slot</label><div style="display:flex; gap:1rem; flex-wrap:wrap;"><label><input type="radio" name="timeslot" value="Morning"> Morning</label><label><input type="radio" name="timeslot" value="Evening"> Evening</label><label><input type="radio" name="timeslot" value="Flexible"> Flexible</label></div></div>
+        <button type="submit" class="btn-primary" style="width:100%; background:#1a4870; color:white; border:none; padding:0.8rem; border-radius:48px; font-weight:700; cursor:pointer;">✅ Confirm & Notify Doctor</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Review Modal -->
+  <div id="reviewModal" class="modal-overlay">
+    <div>
+      <div class="close-btn" id="closeReviewModalBtn">&times;</div>
+      <h3 style="margin-bottom:0.5rem;">✍️ Share Your Experience</h3>
+      <p style="margin-bottom:1.5rem; color:#5a7a9a;">Your review will appear on our homepage.</p>
+      <form id="reviewForm">
+        <div style="margin-bottom:1rem;"><label>Your Name *</label><input type="text" id="reviewerName" required style="width:100%; padding:0.8rem; border-radius:28px; border:1px solid #ccc;"></div>
+        <div style="margin-bottom:1rem;"><label>City *</label><input type="text" id="reviewerCity" required style="width:100%; padding:0.8rem; border-radius:28px; border:1px solid #ccc;"></div>
+        <div style="margin-bottom:1rem;"><label>Your Review *</label><textarea id="reviewText" rows="3" required style="width:100%; padding:0.8rem; border-radius:28px; border:1px solid #ccc;"></textarea></div>
+        <button type="submit" class="btn-primary" style="width:100%; background:#1a4870; color:white; border:none; padding:0.8rem; border-radius:48px; font-weight:700; cursor:pointer;">⭐ Submit Review</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 SP Super Speciality Clinic — Dedication Beyond Measure | Emergency: +91 20 6731 3000</p>
+  </footer>
+
+  <script>
+    // ============================================================
+    // HAMBURGER MENU
+    // ============================================================
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburgerBtn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navMenu.classList.toggle('mobile-open');
+    });
+
+    document.querySelectorAll('.nav-menu a, .nav-menu .btn-appointment-nav').forEach(link => {
+      link.addEventListener('click', function() {
+        hamburgerBtn.classList.remove('active');
+        navMenu.classList.remove('mobile-open');
+      });
+    });
+
+    // ============================================================
+    // DOCTOR DATA — UPDATED: Mohnish experience to 17+ years
+    // ============================================================
+    const doctorProfiles = {
+      ashlesha: {
+        name: 'Dr. Ashlesha Shimpi-Dighe',
+        designation: 'Consultant Pediatric & Neonatal Surgeon',
+        qualifications: 'MBBS, DNB (General Surgery), MCh (Pediatric Surgery)',
+        experience: 'Over 15 years of medical experience, including 9+ years of super-specialization in complex pediatric surgeries.',
+        profile: 'Dr. Ashlesha Shimpi-Dighe is a highly accomplished and compassionate Pediatric and Neonatal Surgeon with over 15 years of cumulative medical expertise, including more than 9 years of super-specialization in complex pediatric surgeries. She is widely trusted for her surgical precision, ethical medical practice, and comforting, child-friendly communication with parents.',
+        milestones: [
+          'Completed her MBBS from MGM Medical College, Aurangabad (2009), followed by a post-graduate DNB in General Surgery from Lokmanya Hospital, Pune.',
+          'Earned her super-speciality M.Ch. in Pediatric Surgery from KEM Hospital and B.J. Wadia Hospital for Children in Mumbai.',
+          'Served as a Senior Specialist Medical Officer at Sion Hospital, Mumbai, and as an Assistant Professor in Pediatric Surgery at B.J. Medical College.',
+          'Actively practices across regional healthcare centers including Surya Mother & Child Super Speciality Hospital (Wakad) and Cloudnine Hospital (Pimple Saudagar).'
+        ],
+        expertise: [
+          'Neonatal & Infant Emergencies – Critical operative procedures in newborns and infants.',
+          'Congenital Anomaly Corrections – Precision reconstructive surgery for birth defects and structural malformations.',
+          'Minimally Invasive Procedures – Pediatric laparoscopic and advanced keyhole surgeries.',
+          'Pediatric Urology – Surgical management of congenital or acquired urinary and reproductive tract disorders.',
+          'Pediatric Tumor Surgery – Specialized pediatric oncology interventions.'
+        ],
+        image: 'ashlesha.jpeg'
+      },
+      mohnish: {
+        name: 'Dr. Mohnish Dighe',
+        designation: 'Consultant Brain & Spine Neurosurgeon',
+        qualifications: 'MBBS, DNB (General Surgery), DNB (Neurosurgery)',
+        experience: '17+ years of rich clinical and surgical expertise across major brain, spine, and neuro-trauma cases.',
+        profile: 'Dr. Mohnish Dighe is a highly proficient, hard-working Consultant Neurosurgeon with rich clinical expertise spanning major brain, spine, and neuro-trauma cases. Dedicated fully to the Pune and PCMC regions, he combines exceptional surgical technique with patient-first neurological care.',
+        milestones: [
+          'Completed his MBBS from MGM Medical College, Mumbai, followed by DNB in General Surgery at Lokmanya Medical Foundation, Pune.',
+          'Achieved super-speciality honors with a DNB in Neurosurgery from Bokaro General Hospital.',
+          'Served as an Assistant Professor of Neurosurgery at Topiwala National Medical College (TNMC) & BYL Nair Hospital, Mumbai for 2 years.',
+          'Worked as a consulting neurosurgeon at Aditya Birla Memorial Hospital (Pune), Jehangir Hospital (Pune), Wockhardt Hospital (Mulund), and Max Neuro Hospital.',
+          'Attached as an expert Consultant Neurosurgeon at YCM Hospital and serves as Director & Neurosurgeon at SpanClinic.'
+        ],
+        expertise: [
+          'Complex Brain & Spine Tumors – Micro-neurosurgical resections.',
+          'Neurovascular Interventions – Advanced surgical management for strokes and aneurysms.',
+          'Neuro-Trauma Management – Critical emergency brain injury and spinal fracture interventions.',
+          'Endoscopic Neurosurgery & Stereotactic Procedures – Computer-guided, minimally invasive skull base surgeries.'
+        ],
+        image: 'Dr-Mohnish.webp'
+      }
+    };
+
+    // ============================================================
+    // PAGE ROUTING
+    // ============================================================
+    const pages = {
+      home: document.getElementById('home-page'),
+      doctors: document.getElementById('doctors-page'),
+      gallery: document.getElementById('gallery-page'),
+      testimonials: document.getElementById('testimonials-page'),
+      faq: document.getElementById('faq-page'),
+      contact: document.getElementById('contact-page'),
+      doctorDetail: document.getElementById('doctor-detail-page')
+    };
+
+    function showPage(pageId) {
+      Object.values(pages).forEach(page => page.classList.remove('active-page'));
+      if (pages[pageId]) pages[pageId].classList.add('active-page');
+      else pages.home.classList.add('active-page');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleHash() {
+      const hash = window.location.hash.substring(1);
+      if (hash.startsWith('doctor-detail/')) {
+        const docId = hash.replace('doctor-detail/', '');
+        if (doctorProfiles[docId]) {
+          showPage('doctorDetail');
+          renderDoctorDetail(docId);
+          return;
+        }
+      }
+      if (pages[hash]) {
+        showPage(hash);
+      } else {
+        showPage('home');
+      }
+    }
+
+    window.addEventListener('hashchange', handleHash);
+
+    // ============================================================
+    // RENDER DOCTOR DETAIL
+    // ============================================================
+    function renderDoctorDetail(docId) {
+      const doc = doctorProfiles[docId];
+      if (!doc) return;
+
+      const container = document.getElementById('doctorDetailContent');
+
+      const milestonesHtml = doc.milestones.map(m => `<li>${m}</li>`).join('');
+      const expertiseHtml = doc.expertise.map(e => `<span class="chip">${e}</span>`).join('');
+
+      const imgHtml = doc.image ?
+        `<img src="${doc.image}" alt="${doc.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'placeholder\\'>${docId === 'ashlesha' ? '👩‍⚕️' : '👨‍⚕️'}</div>'">` :
+        `<div class="placeholder">${docId === 'ashlesha' ? '👩‍⚕️' : '👨‍⚕️'}</div>`;
+
+      container.innerHTML = `
+        <div class="detail-wrapper">
+          <div class="detail-hero">
+            <div class="doc-img">
+              ${imgHtml}
+            </div>
+            <div class="doc-info">
+              <h2>${doc.name}</h2>
+              <div class="designation">${doc.designation}</div>
+              <div class="qualifications">${doc.qualifications}</div>
+              <div class="experience">${doc.experience}</div>
+              <p class="profile-text">${doc.profile}</p>
+            </div>
+          </div>
+
+          <div class="detail-section" style="margin-top:1.5rem;">
+            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+              <span style="font-size:1.2rem;">📌</span>
+              <span style="font-weight:600; color:#1a4870; font-size:1.1rem;">Milestones</span>
+            </div>
+            <ul class="milestone-list">${milestonesHtml}</ul>
+          </div>
+
+          <div class="detail-section">
+            <h3>🩺 Core Areas of Surgical Expertise</h3>
+            <div class="expertise-chips">${expertiseHtml}</div>
+          </div>
+
+          <div style="display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;">
+            <button class="btn-primary" style="padding:0.8rem 2rem; background:#1a4870; color:white; border:none; border-radius:48px; font-weight:700; cursor:pointer;" onclick="bookAppointment('${docId}')">📅 Book Appointment</button>
+            <button class="btn-teal" style="padding:0.8rem 2rem; background:#009688; color:white; border:none; border-radius:48px; font-weight:700; cursor:pointer;" onclick="whatsAppDoctor('${docId}')">💬 WhatsApp</button>
+          </div>
+        </div>
+      `;
+    }
+
+    // ============================================================
+    // ACTIONS
+    // ============================================================
+    function bookAppointment(docId) {
+      const phone = docId === 'ashlesha' ? '9850823550' : '9762801248';
+      const name = docId === 'ashlesha' ? 'Dr. Ashlesha Shimpi-Dighe' : 'Dr. Mohnish Dighe';
+      const message = `*New Appointment Request*%0A%0A*Doctor:* ${name}%0A%0APatient details will be shared during booking.`;
+      window.open(`https://wa.me/91${phone}?text=${message}`, '_blank');
+    }
+
+    function whatsAppDoctor(docId) {
+      const phone = docId === 'ashlesha' ? '9850823550' : '9762801248';
+      const name = docId === 'ashlesha' ? 'Dr. Ashlesha Shimpi-Dighe' : 'Dr. Mohnish Dighe';
+      const message = `Hello%2C%20I%20need%20a%20consultation%20with%20${encodeURIComponent(name)}.`;
+      window.open(`https://wa.me/91${phone}?text=${message}`, '_blank');
+    }
+
+    // ============================================================
+    // EVENT LISTENERS
+    // ============================================================
+    document.querySelectorAll('.doctor-know-more').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const docId = this.dataset.doc;
+        window.location.hash = `doctor-detail/${docId}`;
+      });
+    });
+
+    document.getElementById('backToDoctors')?.addEventListener('click', function() {
+      window.location.hash = 'doctors';
+    });
+
+    document.querySelectorAll('.doctor-book').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const docId = this.dataset.doc;
+        bookAppointment(docId);
+      });
+    });
+
+    document.querySelectorAll('[data-page]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = link.getAttribute('data-page');
+        window.location.hash = page;
+      });
+    });
+
+    // ============================================================
+    // APPOINTMENT MODAL
+    // ============================================================
+    const modal = document.getElementById('appointmentModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    function openModal() { modal.style.visibility = 'visible';
+      modal.style.opacity = '1'; }
+
+    function closeModal() { modal.style.visibility = 'hidden';
+      modal.style.opacity = '0'; }
+
+    const appointmentTriggers = [
+      document.getElementById('navAppointmentBtn'),
+      ...document.querySelectorAll('.hero-appointment-btn'),
+      ...document.querySelectorAll('.contact-appointment-btn')
+    ];
+    appointmentTriggers.forEach(btn => btn?.addEventListener('click', (e) => { e.preventDefault();
+      openModal(); }));
+    closeModalBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    const appForm = document.getElementById('appointmentForm');
+    appForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fullName = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const preferredDoctor = document.getElementById('preferredDoctor').value;
+      const date = document.getElementById('date').value;
+      const timeSlot = document.querySelector('input[name="timeslot"]:checked');
+      if (!fullName || !phone || !preferredDoctor || !date || !timeSlot) {
+        alert("⚠️ Please fill all required fields.");
+        return;
+      }
+      let doctorName = "",
+        doctorNumber = "";
+      if (preferredDoctor === "ashlesha") {
+        doctorName = "Dr. Ashlesha Shimpi-Dighe";
+        doctorNumber = "9850823550";
+      } else {
+        doctorName = "Dr. Mohnish Dighe";
+        doctorNumber = "9762801248";
+      }
+      const message =
+        `*New Appointment Request*%0A%0A*Patient Name:* ${fullName}%0A*Age:* ${document.getElementById('age').value || 'Not provided'}%0A*Phone:* ${phone}%0A*Email:* ${document.getElementById('email').value || 'Not provided'}%0A*Doctor:* ${doctorName}%0A*Date:* ${date}%0A*Time Slot:* ${timeSlot.value}%0A%0A*Clinic:* SP Super Speciality Clinic, Wakad, Pune.%0APlease confirm this appointment.`;
+      window.open(`https://wa.me/91${doctorNumber}?text=${message}`, '_blank');
+      alert(`✅ Appointment request opened in WhatsApp for ${doctorName}. Please send the message to confirm.`);
+      appForm.reset();
+      closeModal();
+    });
+
+    // ============================================================
+    // DIRECTIONS
+    // ============================================================
+    document.querySelectorAll('.directions-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.open('https://www.google.com/maps/search/?api=1&query=Khinvasara+Trade+Centre+Wakad+Pune', '_blank');
+      });
+    });
+
+    // ============================================================
+    // AI CHATBOT
+    // ============================================================
+    const aiModal = document.getElementById('aiModal');
+    const aiBtn = document.getElementById('aiAssistantBtn');
+    const aiClose = document.getElementById('closeAiModal');
+    const chatBody = document.getElementById('chatBody');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendChatBtn');
+
+    function openAiModal() { aiModal.classList.add('active'); }
+
+    function closeAiModal() { aiModal.classList.remove('active'); }
+    if (aiBtn) aiBtn.addEventListener('click', openAiModal);
+    if (aiClose) aiClose.addEventListener('click', closeAiModal);
+    window.addEventListener('click', (e) => { if (e.target === aiModal) closeAiModal(); });
+
+    function getBotReply(userMsg) {
+      const msg = userMsg.toLowerCase();
+      if (msg.includes('appointment') || msg.includes('book')) return "To book an appointment, click the '📅 Book Appointment' button in the navbar or on the home page.";
+      if (msg.includes('hour') || msg.includes('timing') || msg.includes('consultation')) return "Consultation hours: Monday to Saturday, 10:00 AM – 2:00 PM (Neurosurgery - Dr. Mohnish) and 6:30 PM – 8:30 PM (Pediatric Surgery - Dr. Ashlesha). Emergency: Dr. Ashlesha – 9850823550.";
+      if (msg.includes('doctor') || msg.includes('specialist')) return "We have Dr. Ashlesha (Pediatric Surgery) and Dr. Mohnish (Neurosurgery). Visit the 'Doctors' page.";
+      if (msg.includes('address') || msg.includes('location') || msg.includes('map')) return "📍 SP Superspeciality Clinic, Khinvasara Trade Centre, Wakad, Pune – 411057.";
+      return "I'm here to help! Ask about appointments, doctors, hours, or location.";
+    }
+
+    function addMessage(text, isUser) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `chat-message ${isUser ? 'user-message' : 'bot-message'}`;
+      msgDiv.textContent = text;
+      chatBody.appendChild(msgDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function handleUserMessage() {
+      const userText = chatInput.value.trim();
+      if (!userText) return;
+      addMessage(userText, true);
+      chatInput.value = '';
+      setTimeout(() => { const reply = getBotReply(userText);
+        addMessage(reply, false); }, 300);
+    }
+    sendBtn.addEventListener('click', handleUserMessage);
+    chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUserMessage(); });
+    const dateInput = document.getElementById('date');
+    if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+
+    // ============================================================
+    // REVIEW SYSTEM
+    // ============================================================
+    const reviewModal = document.getElementById('reviewModal');
+    const openReviewBtn = document.getElementById('openReviewBtn');
+    const closeReviewModalBtn = document.getElementById('closeReviewModalBtn');
+    const reviewForm = document.getElementById('reviewForm');
+    const testimonialsGrid = document.getElementById('testimonialsGrid');
+    const defaultReviews = [
+      { name: "Rohan", city: "Pune", text: "“Dr. Ashlesha explained everything with patience.”" },
+      { name: "Sneha", city: "Mumbai", text: "“Best neurosurgeon in Wakad.”" },
+      { name: "Anjali", city: "Pimpri", text: "“Very supportive staff.”" }
+    ];
+    let reviews = [];
+
+    function loadReviews() {
+      const stored = localStorage.getItem('spClinicReviews');
+      if (stored) { reviews = JSON.parse(stored); } else { reviews = [...defaultReviews];
+        localStorage.setItem('spClinicReviews', JSON.stringify(reviews)); }
+      renderReviews();
+    }
+
+    function renderReviews() {
+      if (!testimonialsGrid) return;
+      testimonialsGrid.innerHTML = '';
+      reviews.forEach(review => {
+        const card = document.createElement('div');
+        card.className = 'testimonial-card';
+        card.innerHTML = `<p>${review.text}</p><div class="reviewer">— ${review.name}, ${review.city}</div>`;
+        testimonialsGrid.appendChild(card);
+      });
+    }
+
+    function addReview(name, city, text) {
+      reviews.unshift({ name: name.trim(), city: city.trim(), text: `“${text.trim()}”` });
+      if (reviews.length > 15) reviews.pop();
+      localStorage.setItem('spClinicReviews', JSON.stringify(reviews));
+      renderReviews();
+    }
+    if (openReviewBtn) openReviewBtn.addEventListener('click', () => { reviewModal.style.visibility = 'visible';
+      reviewModal.style.opacity = '1'; });
+    if (closeReviewModalBtn) closeReviewModalBtn.addEventListener('click', () => { reviewModal.style.visibility = 'hidden';
+      reviewModal.style.opacity = '0'; });
+    reviewModal?.addEventListener('click', (e) => { if (e.target === reviewModal) { reviewModal.style.visibility = 'hidden';
+        reviewModal.style.opacity = '0'; } });
+    if (reviewForm) {
+      reviewForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('reviewerName').value.trim();
+        const city = document.getElementById('reviewerCity').value.trim();
+        const text = document.getElementById('reviewText').value.trim();
+        if (!name || !city || !text) { alert("Please fill all fields."); return; }
+        addReview(name, city, text);
+        reviewForm.reset();
+        reviewModal.style.visibility = 'hidden';
+        reviewModal.style.opacity = '0';
+        alert("Thank you for your review!");
+      });
+    }
+    loadReviews();
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    handleHash();
+  </script>
+
+</body>
+</html>
